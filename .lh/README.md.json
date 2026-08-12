@@ -1,0 +1,22 @@
+{
+    "sourceFile": "README.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1786570397121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1786570484734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-# React Testing Company Lab – Sprint 1\n+# React Testing Company Lab\n \n Dieses Projekt simuliert ein kleines Unternehmensticket für React-Komponententests.\n \n ## Voraussetzungen\n"
+                }
+            ],
+            "date": 1786570397121,
+            "name": "Commit-0",
+            "content": "# React Testing Company Lab – Sprint 1\n\nDieses Projekt simuliert ein kleines Unternehmensticket für React-Komponententests.\n\n## Voraussetzungen\n\n- Node.js 20 oder neuer\n- npm\n- VS Code\n\n## Installation\n\n```bash\nnpm install\nnpm run dev\n```\n\nTests starten:\n\n```bash\nnpm test\n```\n\nAlle Tests einmal ausführen:\n\n```bash\nnpm run test:run\n```\n\nVitest UI:\n\n```bash\nnpm run test:ui\n```\n\n## Projektziel\n\nDu testest `src/components/LoginForm.tsx` mit:\n\n- Vitest\n- React Testing Library\n- user-event\n- TypeScript\n\nDer API-/Login-Service wird in diesem Sprint über die `onSubmit`-Prop als Mock übergeben. Dadurch bleibt die Komponente isoliert: Es handelt sich um Komponententests.\n\n## Ticket 1 – LoginForm\n\nÖffne:\n\n```text\nsrc/components/LoginForm.test.tsx\n```\n\nErsetze die `it.todo(...)`-Einträge nacheinander durch echte Tests.\n\n### 1.1 Rendering\n\nPrüfe:\n\n- Email-Feld vorhanden\n- Passwortfeld vorhanden\n- Login-Button vorhanden\n\n### 1.2 Initialzustand\n\nPrüfe:\n\n- Login-Button ist aktiviert\n\n### 1.3 Validierung\n\nKlicke ohne Eingaben auf Login.\n\nPrüfe:\n\n- `Email and password are required` erscheint\n- `onSubmit` wurde nicht aufgerufen\n\nBonus: Schreibe später einen parametrisierten Test für:\n- Email leer\n- Passwort leer\n- beide leer\n\n### 1.4 Erfolgreicher Submit\n\nGib ein:\n\n```text\nEmail: \"  arnaud@example.com  \"\nPassword: \"secret123\"\n```\n\nPrüfe, dass `onSubmit` mit folgendem Objekt aufgerufen wird:\n\n```ts\n{\n  email: \"arnaud@example.com\",\n  password: \"secret123\"\n}\n```\n\n### 1.5 Pending State\n\nHier brauchst du eine kontrollierbare Promise:\n\n```ts\nlet resolveSubmit!: () => void;\n\nconst pendingPromise = new Promise<void>((resolve) => {\n  resolveSubmit = resolve;\n});\n\nconst onSubmit = vi.fn(() => pendingPromise);\n```\n\nNach dem Klick, bevor `resolveSubmit()` ausgeführt wurde:\n\n- Button ist deaktiviert\n- Button heißt `Logging in...`\n- Email und Password sind deaktiviert\n\n### 1.6 Nach erfolgreichem Submit\n\nRufe auf:\n\n```ts\nresolveSubmit();\n```\n\nPrüfe anschließend mit `waitFor` oder `findByRole`:\n\n- Button heißt wieder `Login`\n- Button ist aktiviert\n\n### 1.7 Fehlerfall\n\n```ts\nconst onSubmit = vi\n  .fn()\n  .mockRejectedValue(new Error(\"Unauthorized\"));\n```\n\nPrüfe:\n\n- `Login failed. Please try again.` erscheint\n- Button ist wieder aktiviert\n\n## Firmenregeln für die Tests\n\n1. Teste aus Sicht des Benutzers.\n2. Bevorzuge `getByRole`, `getByLabelText` und `findByRole`.\n3. Verwende `userEvent`, nicht `fireEvent`.\n4. Teste keine internen State-Variablen.\n5. Jeder Test soll klar beschreiben, welches Verhalten geprüft wird.\n6. Erstelle für jeden Test einen frischen Mock.\n7. Verwende keine festen Wartezeiten wie `setTimeout` im Test.\n\n"
+        }
+    ]
+}
