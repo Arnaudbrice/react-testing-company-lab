@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1786570397121,
@@ -12,6 +12,10 @@
                 {
                     "date": 1786570484734,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-# React Testing Company Lab – Sprint 1\n+# React Testing Company Lab\n \n Dieses Projekt simuliert ein kleines Unternehmensticket für React-Komponententests.\n \n ## Voraussetzungen\n"
+                },
+                {
+                    "date": 1786571631358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -91,8 +91,9 @@\n Email: \"  arnaud@example.com  \"\n Password: \"secret123\"\n ```\n \n+\n Prüfe, dass `onSubmit` mit folgendem Objekt aufgerufen wird:\n \n ```ts\n {\n"
                 }
             ],
             "date": 1786570397121,

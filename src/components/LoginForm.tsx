@@ -28,7 +28,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       setIsSubmitting(true);
       await onSubmit({
         email: email.trim(),
-        password
+        password,
       });
     } catch {
       setError("Login failed. Please try again.");
